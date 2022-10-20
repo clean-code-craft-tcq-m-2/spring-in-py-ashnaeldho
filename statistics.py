@@ -26,4 +26,4 @@ class StatsAlerter():
     if computedStats["max"] > self.maxThreshold :
       self.setList[0].emailSent = True
       self.setList[1].ledGlows = True
-      
+      #
