@@ -13,20 +13,17 @@ def calculateStats(numbers):
         minVal = min(numbers)
         return avgVal,minVal,maxVal
       
-def EmailAlert(bool):
-  emailSent=False
-  return emailSent
-
-def LEDAlert(bool):
-  ledAlert = True
-  return ledAlert
-
-def StatsAlerter(maxThreshold):
-  computedStats = statistics.calculateStats([22.6, 12.5, 3.7])
-  if computedStats[2] > maxThreshold:
-    EmailAlert.emailSent = True
-    LEDAlert.ledAlert = True
-  else:
-    EmailAlert.emailSent = False
-    LEDAlert.ledAlert = False
+class EmailAlert():
+  emailSent = False
+class LEDAlert():
+  ledGlows = False
+class StatsAlerter():
+  def __init__(self,maxThreshold, setList):
+      self.maxThreshold = maxThreshold
+      self.setList = setList
+  def checkAndAlert(self,values):
+    computedStats = calculateStats(values)
+    if computedStats["max"] > self.maxThreshold :
+      self.setList[0].emailSent = True
+      self.setList[1].ledGlows = True
       
